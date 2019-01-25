@@ -9,9 +9,12 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
+    "mockjs": "^1.0.1-beta3",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vux": "^2.9.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",
@@ -22,10 +25,15 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-eslint": "^10.0.1",
     "chai": "^4.1.2",
+    "compression-webpack-plugin": "^2.0.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.21"
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.21",
+    "vux-loader": "^1.2.9",
+    "yaml-loader": "^0.5.0"
   }
 }
