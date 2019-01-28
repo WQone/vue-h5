@@ -1,15 +1,16 @@
+import 'lib-flexible/flexible';
 import Vue from 'vue';
-import FastClick from 'fastclick';
-import App from './App.vue';
+import 'vant/lib/index.css';
+import App from './App';
 import router from './router';
 import store from './store';
-import './vux-ui';
+import './vant-ui';
+import './api/mock'; // 添加mockjs拦截请求，模拟返回服务器数据
 
 Vue.config.productionTip = false;
-FastClick.attach(document.body);
 
 new Vue({
   router,
   store,
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app');

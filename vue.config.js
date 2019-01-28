@@ -6,7 +6,6 @@
  */
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const vuxLoader = require('vux-loader');
 
 const productionGzipExtensions = ['js', 'css'];
 const path = require('path');
@@ -16,7 +15,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  baseUrl: '/',
+  publicPath: '/',
   outputDir: 'dist',
   lintOnSave: process.env.NODE_ENV !== 'production',
   assetsDir: 'static',
@@ -45,10 +44,6 @@ module.exports = {
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
-        vuxLoader.merge(config, {
-          options: {},
-          plugins: ['vux-ui'],
-        }),
         new UglifyJsPlugin({
           uglifyOptions: {
             compress: {

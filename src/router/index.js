@@ -1,23 +1,44 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '../views/Home.vue';
 
 Vue.use(Router);
 
+export const asyncRouterMap = [
+  {
+    path: '/Home',
+    name: '首页',
+    meta: { menu: true, icon: 'home-o' },
+    component: () => import('../views/Home'),
+  },
+  {
+    path: '/classify',
+    name: '分类',
+    meta: { menu: true, icon: 'gift-o' },
+    component: () => import('../views/Classify'),
+  },
+  {
+    path: '/classify',
+    name: '购物车',
+    meta: { menu: true, icon: 'shopping-cart-o', info: 5 },
+    component: () => import('../views/Classify'),
+  },
+  {
+    path: '/classify',
+    name: '个人',
+    meta: { menu: true, icon: 'friends-o', dot: true },
+    component: () => import('../views/Classify'),
+  },
+];
+
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/About.vue'),
+      name: 'Layout',
+      component: () => import('../views/Layout'),
+      redirect: 'Home',
+      children: asyncRouterMap,
     },
   ],
 });
