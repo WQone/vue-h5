@@ -1,5 +1,5 @@
 <template>
-  <div class="Classify">分类</div>
+  <div class="ShoppingCart">购物车</div>
 </template>
 
 <script>

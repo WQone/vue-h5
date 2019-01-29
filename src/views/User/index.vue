@@ -1,5 +1,5 @@
 <template>
-  <div class="Classify">分类</div>
+  <div class="User">个人</div>
 </template>
 
 <script>

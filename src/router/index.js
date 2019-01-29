@@ -11,22 +11,22 @@ export const asyncRouterMap = [
     component: () => import('../views/Home'),
   },
   {
-    path: '/classify',
+    path: '/Classify',
     name: '分类',
     meta: { menu: true, icon: 'gift-o' },
     component: () => import('../views/Classify'),
   },
   {
-    path: '/classify',
+    path: '/ShoppingCart',
     name: '购物车',
     meta: { menu: true, icon: 'shopping-cart-o', info: 5 },
-    component: () => import('../views/Classify'),
+    component: () => import('../views/ShoppingCart'),
   },
   {
-    path: '/classify',
+    path: '/User',
     name: '个人',
     meta: { menu: true, icon: 'friends-o', dot: true },
-    component: () => import('../views/Classify'),
+    component: () => import('../views/User'),
   },
 ];
 
