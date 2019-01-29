@@ -1,5 +1,6 @@
 import 'lib-flexible/flexible';
 import Vue from 'vue';
+import './assets/css/reset.css';
 import 'vant/lib/index.css';
 import App from './App';
 import router from './router';

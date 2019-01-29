@@ -74,6 +74,11 @@ import {
   Waterfall,
 } from 'vant';
 
+import * as cusComponent from './components/index';
+
+const keys = Object.keys(cusComponent);
+keys.map((item) => Vue.component(item, cusComponent[item]));
+
 Vue.component('vanActionsheet', Actionsheet);
 Vue.component('vanAddressEdit', AddressEdit);
 Vue.component('vanAddressList', AddressList);
