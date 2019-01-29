@@ -15,7 +15,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-  publicPath: '/',
+  publicPath: './',
   outputDir: 'dist',
   lintOnSave: process.env.NODE_ENV !== 'production',
   assetsDir: 'static',

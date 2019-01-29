@@ -3,7 +3,7 @@
     <div style="height:100%;">
       <router-view></router-view>
       <van-tabbar :value="retMenuActive">
-        <van-tabbar-item :dot="item.meta.dot" :icon="item.meta.icon" :info="item.meta.info" :key="index" :url="item.path" active-color="#07c160" v-for="(item,index) in retMenulist">{{item.name}}</van-tabbar-item>
+        <van-tabbar-item :dot="item.meta.dot" :icon="item.meta.icon" :info="item.meta.info" :key="index" :to="item.path" active-color="#07c160" v-for="(item,index) in retMenulist">{{item.name}}</van-tabbar-item>
       </van-tabbar>
     </div>
   </div>
