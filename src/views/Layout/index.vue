@@ -41,5 +41,6 @@ export default {
 .main {
   box-sizing: border-box;
   height: 100%;
+  overflow-y: auto;
 }
 </style>

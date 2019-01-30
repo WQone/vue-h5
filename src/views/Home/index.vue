@@ -14,7 +14,7 @@
         <p>{{item.name}}</p>
       </van-col>
     </van-row>
-    <div class="mymarquee">
+    <div class="mymarquee f1Space">
       <Marquee :NoticeData="NoticeData"></Marquee>
     </div>
     <div class="discountGoods">
@@ -22,11 +22,44 @@
         <span>限时购</span>
         <span>
           距离结束还剩
+          <b>{{day}}</b>:
           <b>{{hour}}</b>:
           <b>{{Minute}}</b>:
           <b>{{second}}</b>
         </span>
       </p>
+      <ul class="discountGoods-list f1Space">
+        <li :key="index" v-for="(item,index) in 9">
+          <div class="li-img">
+            <img src="https://oss.100bsh.com/f0/43/4e0808801aa5.jpg!m?39679_OW800_OH800">
+          </div>
+          <div class="li-text">
+            <p class="title">喜力啤酒 330ml*6 听装喜力啤酒 330ml*6 听装喜力啤酒 330ml*6 听装喜力啤酒 330ml*6 听装喜力啤酒 330ml*6 听装</p>
+            <p class="des">进口果汁 浓郁的芒果香</p>
+            <div class="price">
+              <div>
+                <big>￥38.80</big>
+                <del>￥60.00</del>
+              </div>
+              <van-button size="small" type="danger">马上抢</van-button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="mainGoods">
+        <div class="mainGoods-header f1Space">
+          <img src="https://oss.100bsh.com/6f/ae/aefcb27f377f.jpg?76166_OW1200_OH500">
+        </div>
+        <div class="mainGoods-list">
+          <div :key="item" class="mainGoods-list-box" v-for="item in 9">
+            <div class="mainGoods-list-box-img">
+              <img src="https://oss.100bsh.com/30/3d/34099f05169d.jpg!l?88482_OW800_OH800">
+            </div>
+            <p>杨生记 糯米锅巴 (原味) 250g</p>
+            <p class="price">¥10.80</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +67,7 @@
 <script>
 export default {
   mounted() {
-    this.timer = setInterval(this.getTime, 1000); // 定时调用
+    this.countdown();
   },
   beforeDestroy() {
     if (this.timer) clearInterval(this.timer);
@@ -66,40 +99,29 @@ export default {
         },
       ],
       NoticeData: ['全场19.80/kg起包邮', 'ddewfereetrtrtrtrtrt2', 'asfewteyr6u345454'],
+      day: 0,
       hour: 0,
       Minute: 0,
       second: 0,
     };
   },
   methods: {
-    getTime() {
-      const date = new Date();
-      const now = date.getTime();
-      const endDate = new Date('2019-2-02 00:00:00'); // 设置截止时间
-      const end = endDate.getTime();
-      const leftTime = end - now; // 时间差
-      let h = 0;
-      let m = 0;
-      let s = 0;
-      if (leftTime >= 0) {
-        h = Math.floor(leftTime / 1000 / 60 / 60);
-        m = Math.floor((leftTime / 1000 / 60) % 60);
-        s = Math.floor((leftTime / 1000) % 60);
-        if (s < 10) {
-          s = `0${s}`;
-        }
-        if (m < 10) {
-          m = `0${m}`;
-        }
-        if (h < 10) {
-          h = `0${h}`;
-        }
-        this.second = s;
-        this.Minute = m;
-        this.hour = h;
-      } else {
-        console.log('已截止');
-      }
+    countdown() {
+      const end = Date.parse(new Date('2019-2-01'));
+      const now = Date.parse(new Date());
+      const msec = end - now;
+      const day = parseInt(msec / 1000 / 60 / 60 / 24, 0);
+      const hr = parseInt((msec / 1000 / 60 / 60) % 24, 0);
+      const min = parseInt((msec / 1000 / 60) % 60, 0);
+      const sec = parseInt((msec / 1000) % 60, 0);
+      this.day = day;
+      this.hour = hr > 9 ? hr : `0${hr}`;
+      this.Minute = min > 9 ? min : `0${min}`;
+      this.second = sec > 9 ? sec : `0${sec}`;
+      const that = this;
+      setTimeout(() => {
+        that.countdown();
+      }, 1000);
     },
   },
 };
@@ -123,10 +145,6 @@ export default {
     color: #222;
     font-size: 14px;
   }
-}
-.mymarquee {
-  background: #f1f1f1;
-  padding-bottom: 8px;
 }
 .mytab {
   /deep/ .van-tab {
@@ -152,6 +170,83 @@ export default {
           border-radius: 4px;
           margin: 0 2px;
         }
+      }
+    }
+  }
+  &-list {
+    li {
+      border-bottom: 1px solid #f1f1f1;
+      height: 105px;
+      padding: 10px;
+      position: relative;
+      .li-img {
+        height: 100%;
+        width: 105px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .li-text {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+        padding: 10px 10px 10px 125px;
+        height: 100%;
+        box-sizing: border-box;
+        line-height: 25px;
+        .title,
+        .des {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow-x: hidden;
+        }
+        .des {
+          color: #999;
+          font-size: 13px;
+        }
+        .price {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 25px;
+          big {
+            color: #c91523;
+            margin-right: 5px;
+          }
+          del {
+            color: #999;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+.mainGoods {
+  &-list {
+    &-box {
+      width: 50%;
+      height: 190px;
+      border-bottom: 1px solid #f1f1f1;
+      border-right: 1px solid #f1f1f1;
+      float: left;
+      box-sizing: border-box;
+      text-align: center;
+      padding: 5px 15px;
+      &:nth-child(2n) {
+        border-right: none;
+      }
+      &-img {
+        height: 78%;
+      }
+      p {
+        font-size: 12px;
+        color: #767676;
+        padding-bottom: 5px;
+      }
+      .price {
+        color: #c91523;
       }
     }
   }
