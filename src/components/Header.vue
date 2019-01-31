@@ -15,12 +15,14 @@
         </li>
       </ul>
     </div>
-    <div class="Header">
-      <van-icon @click="isShow = true" class="Header-left" name="wap-nav"></van-icon>
-      <div class="Header-input">
-        <van-search placeholder="请输入关键词搜索" v-model="value"/>
+    <div class="Header" id="header">
+      <van-icon @click="$router.push('/')" class="Header-left" name="arrow-left" v-if="!isHome"></van-icon>
+      <van-icon :style="isHome ? '':'left:40px;'" @click="isShow = true" class="Header-left" name="wap-nav"></van-icon>
+      <div :style="isHome ? '':'padding-left:72px;'" class="Header-input">
+        <van-search placeholder="请输入关键词搜索" v-model="value" v-if="isSearch"/>
+        <p v-else>{{this.$route.name}}</p>
       </div>
-      <van-icon class="Header-right" name="shopping-cart-o" @click="$router.push('/ShoppingCart')"></van-icon>
+      <van-icon @click="$router.push('/ShoppingCart')" class="Header-right" name="shopping-cart-o"></van-icon>
     </div>
   </div>
 </template>
@@ -32,6 +34,18 @@ export default {
       value: '',
       isShow: false,
     };
+  },
+  computed: {
+    isHome() {
+      let ret = true;
+      if (this.$route.path !== '/Home') ret = false;
+      return ret;
+    },
+    isSearch() {
+      let ret = true;
+      if (this.$route.path !== '/Home' && this.$route.path !== '/Classify') ret = false;
+      return ret;
+    },
   },
   methods: {},
 };
@@ -77,13 +91,14 @@ export default {
   padding: 7px;
   background-color: #e03131;
   height: 44px;
-  line-height: 44px;
+  line-height: 30px;
   width: 100%;
   box-sizing: border-box;
   position: fixed;
-  z-index: 999;
+  z-index: 200;
   &-left {
-    font-size: 30px;
+    line-height: 30px;
+    font-size: 27px;
     color: white;
     position: absolute;
     left: 8px;
@@ -95,6 +110,8 @@ export default {
     box-sizing: border-box;
     padding: 0 40px;
     margin: auto;
+    color: white;
+    text-align: center;
     .van-search {
       background: white !important;
       height: 100%;
@@ -102,15 +119,16 @@ export default {
       padding: 5px;
       border-radius: 4px;
     }
-    /deep/ i {
+    /deep/ i:first-child {
       font-weight: bold;
       font-size: 18px;
       color: #e03131;
     }
   }
   &-right {
+    line-height: 30px;
+    font-size: 27px;
     position: absolute;
-    font-size: 30px;
     color: white;
     right: 8px;
     top: 6px;

@@ -1,7 +1,7 @@
 <template>
   <div style="height:100%;">
     <div style="height:100%;">
-      <Header id="header"></Header>
+      <Header></Header>
       <div :style="`padding-top:${headerHeight}px;padding-bottom:${tabbarHeight}px`" class="main">
         <router-view></router-view>
       </div>

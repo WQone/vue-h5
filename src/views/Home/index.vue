@@ -107,9 +107,7 @@ export default {
   },
   methods: {
     countdown() {
-      const end = Date.parse(new Date('2019-2-01'));
-      const now = Date.parse(new Date());
-      const msec = end - now;
+      const msec = new Date('2019/2/12') - new Date();
       const day = parseInt(msec / 1000 / 60 / 60 / 24, 0);
       const hr = parseInt((msec / 1000 / 60 / 60) % 24, 0);
       const min = parseInt((msec / 1000 / 60) % 60, 0);

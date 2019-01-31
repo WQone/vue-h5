@@ -1,7 +1,9 @@
 <template>
   <div class="ShoppingCart">
     <div class="ShoppingCart-empty">
-      <img src="../../assets/img/cart_null.png">
+      <div class="ShoppingCart-empty-img">
+        <img src="../../assets/img/cart_null.png">
+      </div>
       <p>购物车空空如也,快去购物吧!</p>
       <van-button class="btn" size="small" type="default">去逛逛</van-button>
     </div>
@@ -17,14 +19,21 @@ export default {
 </script>
 <style lang="less" scoped>
 .ShoppingCart {
+  height: 100%;
+
   &-empty {
-    padding: 80px 45px 140px;
+    height: 100%;
     background-color: #f1f1f1;
+    padding: 80px 45px 140px;
+    box-sizing: border-box;
     text-align: center;
     font-size: 14px;
-    img {
-      width: 100px;
+    &-img {
+      img {
+        width: 100px;
+      }
     }
+
     p {
       color: #8f8f94;
       margin: 15px 0;
