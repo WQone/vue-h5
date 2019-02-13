@@ -1,5 +1,5 @@
 <template>
-  <div class="Marquee" style="height:30px;line-height: 30px; ">
+  <div class="Marquee">
     <van-icon name="volume-o"/>
     <div :style="{marginTop: `-${NoticeIndex}px`,  transition: `${NoticeIndex ? duration: 0}ms`}" class="text">
       <template v-for="(item, index) in NoticeData">
@@ -56,6 +56,8 @@ export default {
 
 <style lang="less" scoped>
 .Marquee {
+  height:30PX;
+  line-height: 30PX;
   background: white;
   position: relative;
   border-top: 1px solid #f1f1f1;

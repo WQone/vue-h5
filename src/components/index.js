@@ -3,5 +3,6 @@
  */
 import Marquee from './Marquee';
 import Header from './Header';
+import Loading from './Loading';
 
-export { Marquee, Header };
+export { Marquee, Header, Loading };

@@ -17,6 +17,16 @@
     <div class="mymarquee f1Space">
       <Marquee :NoticeData="NoticeData"></Marquee>
     </div>
+    <div class="myping">
+      <div class="myping-img">
+        <img src="../../assets/img/fg-title.png">
+      </div>
+      <div  class="myping-body">
+        <div class="myping-ul" ref="back">
+          <div :key="i" class="myping-ul-li" v-for="i in 9"></div>
+        </div>
+      </div>
+    </div>
     <div class="discountGoods">
       <p class="discountGoods-header">
         <span>限时购</span>
@@ -50,7 +60,7 @@
         <div class="mainGoods-header f1Space">
           <img src="https://oss.100bsh.com/6f/ae/aefcb27f377f.jpg?76166_OW1200_OH500">
         </div>
-        <div class="mainGoods-list">
+        <div class="mainGoods-list f1Space">
           <div :key="item" class="mainGoods-list-box" v-for="item in 9">
             <div class="mainGoods-list-box-img">
               <img src="https://oss.100bsh.com/30/3d/34099f05169d.jpg!l?88482_OW800_OH800">
@@ -74,6 +84,7 @@ export default {
   },
   data() {
     return {
+      touch: {},
       tabNav: ['首页', '美食', '酒饮', '个户', '婴童', '居家', '宠物', '其他'],
       imgArr: [
         'https://img.wochu.cn/upload/eb6e2eb4-3c88-4f4d-abd3-cabe65db19ba.jpg',
@@ -83,19 +94,19 @@ export default {
       linkNav: [
         {
           name: '本周新品',
-          img: 'https://oss.100bsh.com/f7/8c/89751694e903.png?90467_OW96_OH96',
+          img: 'https://oss.100bsh.com/f7/8c/89751694e903.png',
         },
         {
           name: '邀请有礼',
-          img: 'https://oss.100bsh.com/95/4f/4859e715e9fe.png?62436_OW582_OH582',
+          img: 'https://oss.100bsh.com/95/4f/4859e715e9fe.png',
         },
         {
           name: '充值优惠',
-          img: 'https://oss.100bsh.com/3b/c7/c9b6f7e0e3ee.png?90481_OW96_OH96',
+          img: 'https://oss.100bsh.com/3b/c7/c9b6f7e0e3ee.png',
         },
         {
           name: '银行特惠',
-          img: 'https://oss.100bsh.com/60/e9/ed00bffb7445.png?90546_OW96_OH96',
+          img: 'https://oss.100bsh.com/60/e9/ed00bffb7445.png',
         },
       ],
       NoticeData: ['全场19.80/kg起包邮', 'ddewfereetrtrtrtrtrt2', 'asfewteyr6u345454'],
@@ -106,8 +117,26 @@ export default {
     };
   },
   methods: {
+    touchStart(e) {
+      console.log(e.touches[0]);
+      const touch = e.touches[0];
+      // this.touch.startX = touch.pageX;
+      // this.touch.startY = touch.pageY;
+    },
+    touchMove(e) {
+      const touch = e.touches[0];
+      console.log(e.touches[0]);
+      console.log('move', touch.pageX, this.$refs.back.style.width);
+      // this.$refs.back.style.transform = `translate3d(${touch.pageX}px,0,0)`;
+      // this.$refs.back.style.transitionDuration = 10;
+    },
+    touchEnd(e) {
+      console.log(e.touches[0]);
+      console.log('end');
+    },
+    // 倒计时
     countdown() {
-      const msec = new Date('2019/2/12') - new Date();
+      const msec = new Date('2019/2/14') - new Date();
       const day = parseInt(msec / 1000 / 60 / 60 / 24, 0);
       const hr = parseInt((msec / 1000 / 60 / 60) % 24, 0);
       const min = parseInt((msec / 1000 / 60) % 60, 0);
@@ -142,6 +171,39 @@ export default {
     margin-top: 5px;
     color: #222;
     font-size: 14px;
+  }
+}
+.myping {
+  overflow: hidden;
+  &-img {
+    height: 28px;
+    left: 12px;
+    padding-bottom: 8px;
+    position: relative;
+    img {
+      width: auto;
+    }
+  }
+  &-body {
+    padding: 25px 12px;
+    background: -webkit-linear-gradient(270deg, #ffc793, #f9d8a9);
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &-ul {
+    // transform: translate3d(-435.6px, 0px, 0px);
+    transition-duration: 0ms;
+    display: flex;
+    &-li {
+      flex-shrink: 0;
+      width: 120px;
+      background: white;
+      height: 180px;
+      box-shadow: 0 5px 12px #f9b188;
+      border-radius: 8px;
+      margin-right: 12px;
+    }
   }
 }
 .mytab {

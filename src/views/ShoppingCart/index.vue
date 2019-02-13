@@ -1,29 +1,36 @@
 <template>
   <div class="ShoppingCart">
-    <div class="ShoppingCart-empty">
+    <Loading v-if="showLoading"></Loading>
+    <div class="ShoppingCart-empty" v-else>
       <div class="ShoppingCart-empty-img">
         <img src="../../assets/img/cart_null.png">
       </div>
       <p>购物车空空如也,快去购物吧!</p>
-      <van-button class="btn" size="small" type="default">去逛逛</van-button>
+      <van-button @click="$router.push('/')" class="btn" size="small" type="default">去逛逛</van-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  mounted() {
+    setTimeout(() => {
+      this.showLoading = false;
+    }, 600);
+  },
   data() {
-    return {};
+    return {
+      showLoading: true,
+    };
   },
 };
 </script>
 <style lang="less" scoped>
 .ShoppingCart {
   height: 100%;
-
+  background-color: #f1f1f1;
   &-empty {
     height: 100%;
-    background-color: #f1f1f1;
     padding: 80px 45px 140px;
     box-sizing: border-box;
     text-align: center;
@@ -33,7 +40,6 @@ export default {
         width: 100px;
       }
     }
-
     p {
       color: #8f8f94;
       margin: 15px 0;

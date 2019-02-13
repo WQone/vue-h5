@@ -3,7 +3,9 @@
     <div style="height:100%;">
       <Header></Header>
       <div :style="`padding-top:${headerHeight}px;padding-bottom:${tabbarHeight}px`" class="main">
-        <router-view></router-view>
+        <transition mode="out-in" name="router-fade">
+          <router-view></router-view>
+        </transition>
       </div>
       <van-tabbar :value="retMenuActive" id="tabbar">
         <van-tabbar-item :dot="item.meta.dot" :icon="item.meta.icon" :info="item.meta.info" :key="index" :to="item.path" active-color="#07c160" v-for="(item,index) in retMenulist">{{item.name}}</van-tabbar-item>
@@ -42,5 +44,14 @@ export default {
   box-sizing: border-box;
   height: 100%;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.router-fade-enter-active,
+.router-fade-leave-active {
+  transition: opacity 0.3s;
+}
+.router-fade-enter,
+.router-fade-leave-active {
+  opacity: 0;
 }
 </style>

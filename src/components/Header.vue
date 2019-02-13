@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Header" id="header">
     <div @click="isShow = false" class="Mask" v-if="isShow"></div>
     <div :style="isShow ? 'margin-left:0px;opacity: 1;':'margin-left:-100%;opacity: 0;'" class="Sidebar">
       <p class="Sidebar-status">请登录</p>
@@ -15,15 +15,13 @@
         </li>
       </ul>
     </div>
-    <div class="Header" id="header">
-      <van-icon @click="$router.push('/')" class="Header-left" name="arrow-left" v-if="!isHome"></van-icon>
-      <van-icon :style="isHome ? '':'left:40px;'" @click="isShow = true" class="Header-left" name="wap-nav"></van-icon>
-      <div :style="isHome ? '':'padding-left:72px;'" class="Header-input">
-        <van-search placeholder="请输入关键词搜索" v-model="value" v-if="isSearch"/>
-        <p v-else>{{this.$route.name}}</p>
-      </div>
-      <van-icon @click="$router.push('/ShoppingCart')" class="Header-right" name="shopping-cart-o"></van-icon>
+    <van-icon @click="$router.push('/')" class="Header-left" name="arrow-left" v-if="!isHome"></van-icon>
+    <van-icon :class="`Header-left ${isHome ? '' : 'left'}`" @click="isShow = true" name="wap-nav"></van-icon>
+    <div :style="isHome ? '':'padding-left:72px;'" class="Header-input">
+      <van-search placeholder="请输入关键词搜索" v-if="isSearch" v-model="value"/>
+      <p v-else>{{this.$route.name}}</p>
     </div>
+    <van-icon @click="$router.push('/ShoppingCart')" class="Header-right" name="shopping-cart-o"></van-icon>
   </div>
 </template>
 
@@ -54,17 +52,19 @@ export default {
 .Mask {
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
+  left: 0;
   z-index: 999;
   background: rgba(0, 0, 0, 0.4);
 }
 .Sidebar {
   position: fixed;
   top: 0;
+  left: 0;
+  height: 100vh;
   z-index: 1000;
   width: 80%;
-  height: 100%;
   background-color: #fff;
   overflow: scroll;
   transition: 0.5s;
@@ -103,6 +103,10 @@ export default {
     position: absolute;
     left: 8px;
     top: 6px;
+    z-index: 1;
+  }
+  .left {
+    left: 40px;
   }
   &-input {
     width: 100%;
