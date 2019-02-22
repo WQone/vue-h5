@@ -74,4 +74,19 @@ module.exports = {
     loaderOptions: {}, // css预设器配置项
     modules: false, // 启用 CSS modules for all css / pre-processor files.
   },
+  pwa: {
+    name: 'WQ-PWA',
+    themeColor: '#e03131',
+    msTileColor: '#000000',
+    appleMobileWebAppCapable: 'yes',
+    // appleMobileWebAppStatusBarStyle: 'black',
+
+    // configure the workbox plugin
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: 'src/registerServiceWorker.js',
+      // ...other Workbox options...
+    },
+  },
 };

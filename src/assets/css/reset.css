@@ -13,6 +13,7 @@ body {
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   color: #333;
+  -webkit-user-select: none;
 }
 
 input,
