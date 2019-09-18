@@ -1,9 +1,5 @@
 <template>
-  <div style="height:100%;">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
-  </div>
+  <div style="height:100%;">我是详情</div>
 </template>
 
 <script>

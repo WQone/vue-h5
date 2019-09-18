@@ -8,7 +8,7 @@ import router from './router';
 import store from './store';
 import './vant-ui';
 import './api/mock'; // 添加mockjs拦截请求，模拟返回服务器数据
-import './registerServiceWorker'
+import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 

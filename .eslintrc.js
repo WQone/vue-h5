@@ -70,5 +70,6 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ],
+    'no-unused-expressions': ['error', { allowShortCircuit: true }],
   },
 };

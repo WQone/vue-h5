@@ -10,11 +10,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-scroll": "^1.15.2",
     "lib-flexible": "^0.3.2",
     "mockjs": "^1.0.1-beta3",
     "register-service-worker": "^1.5.2",
-    "vant": "^1.6.2",
-    "vue": "^2.5.21",
+    "vant": "^1.6.10",
+    "vue": "^2.6.10",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -34,7 +35,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "postcss-px2rem": "^0.3.0",
-    "uglifyjs-webpack-plugin": "^2.1.1",
-    "vue-template-compiler": "^2.5.21"
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "vue-template-compiler": "^2.6.10"
   }
 }

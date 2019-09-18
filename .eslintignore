@@ -3,3 +3,4 @@
 src/vuex/*
 src/router/*
 src/fonts/*
+src/registerServiceWorker.js
