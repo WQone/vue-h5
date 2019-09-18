@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%;">我是详情</div>
+  <div style="height:100%;">我是详情页</div>
 </template>
 
 <script>
