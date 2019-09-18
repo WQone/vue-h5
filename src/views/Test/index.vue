@@ -17,15 +17,12 @@
 import BScroll from 'better-scroll';
 
 export default {
+  beforeRouteLeave(to, from, next) {
+    this.scrolly = this.scroll.y;
+    next();
+  },
   mounted() {
     console.log('mounted');
-    this.$nextTick(() => {
-      this.scroll = new BScroll(this.$refs.wrapper, {
-        click: true,
-        probeType: 2,
-        bounce: false,
-      });
-    });
   },
   activated() {
     console.log('activated', this.num);
