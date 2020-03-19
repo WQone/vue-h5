@@ -38,7 +38,9 @@ export default {
     } else {
       this.onScroll();
       console.log('this.scrolly', this.scrolly, this.scroll);
-      this.scroll.scrollTo(0, this.scrolly, 0);
+      this.$nextTick(() => {
+        this.scroll.scrollTo(0, this.scrolly, 0);
+      });
     }
   },
   deactivated() {
